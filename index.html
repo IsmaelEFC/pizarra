@@ -1023,7 +1023,7 @@
         /* RESPONSIVE - MOBILE */
         @media (max-width: 768px) {
             #panel-left {
-                width: 260px;
+                width: 240px;
                 max-width: calc(100vw - 32px);
                 top: 10px;
                 left: 16px;
@@ -1033,7 +1033,7 @@
             }
 
             #panel-right {
-                width: 280px;
+                width: 260px;
                 max-width: calc(100vw - 32px);
                 top: 10px;
                 right: 16px;
@@ -1134,7 +1134,7 @@
 
         @media (max-width: 480px) {
             #panel-left {
-                width: 240px;
+                width: 200px;
                 max-width: calc(100vw - 20px);
                 left: 10px;
                 padding: 10px;
@@ -1142,11 +1142,20 @@
             }
 
             #panel-right {
-                width: 240px;
+                width: 200px;
                 max-width: calc(100vw - 20px);
                 right: 10px;
                 padding: 10px;
                 max-height: calc(100vh - 80px);
+                transform: translateX(110%);
+                opacity: 0;
+                pointer-events: none;
+            }
+
+            #panel-right:not(.hidden) {
+                transform: translateX(0);
+                opacity: 1;
+                pointer-events: auto;
             }
 
             #panel-player {
@@ -1187,6 +1196,40 @@
                 width: 36px;
                 height: 36px;
                 font-size: 14px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            #panel-left {
+                width: 160px;
+                max-width: calc(100vw - 16px);
+                left: 8px;
+                padding: 8px;
+                max-height: calc(100vh - 70px);
+            }
+
+            #panel-right {
+                width: 160px;
+                max-width: calc(100vw - 16px);
+                right: 8px;
+                padding: 8px;
+                max-height: calc(100vh - 70px);
+                transform: translateX(110%);
+                opacity: 0;
+                pointer-events: none;
+            }
+
+            #panel-right:not(.hidden) {
+                transform: translateX(0);
+                opacity: 1;
+                pointer-events: auto;
+            }
+
+            #panel-player {
+                bottom: 8px;
+                width: calc(100vw - 16px);
+                max-width: 300px;
+                padding: 6px 10px;
             }
         }
     </style>
