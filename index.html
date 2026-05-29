@@ -1012,6 +1012,159 @@
                 color: var(--cyan);
                 background: var(--cyan-dim);
             }
+
+        /* RESPONSIVE - MOBILE */
+        @media (max-width: 768px) {
+            #panel-left {
+                width: calc(100vw - 32px);
+                max-width: 320px;
+                top: 10px;
+                left: 16px;
+                padding: 12px;
+            }
+
+            #panel-right {
+                width: calc(100vw - 32px);
+                max-width: 320px;
+                top: 10px;
+                right: 16px;
+                padding: 12px;
+                max-height: calc(100vh - 80px);
+            }
+
+            #top-buttons {
+                top: 10px;
+                right: 10px;
+                gap: 6px;
+            }
+
+            .tr-btn {
+                padding: 6px 10px;
+                font-size: 10px;
+            }
+
+            .top-row {
+                gap: 6px;
+            }
+
+            #panel-player {
+                bottom: 10px;
+                padding: 8px 12px;
+                gap: 8px;
+                width: calc(100vw - 24px);
+                max-width: 400px;
+            }
+
+            .ctrl-btn {
+                width: 32px;
+                height: 32px;
+            }
+
+            .play-ctrl {
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+            }
+
+            .prog-wrap {
+                width: 100px;
+            }
+
+            input[type=range] {
+                width: 60px;
+            }
+
+            .btn {
+                padding: 10px;
+                font-size: 11px;
+            }
+
+            .icon-btn {
+                width: 32px;
+                height: 32px;
+                font-size: 14px;
+            }
+
+            .s-input {
+                font-size: 11px;
+                padding: 6px 8px;
+            }
+
+            .sec {
+                margin-bottom: 10px;
+            }
+
+            .sec-label {
+                font-size: 8px;
+            }
+
+            .wp-item {
+                font-size: 7px;
+                padding: 2px 4px;
+            }
+
+            .route-btn {
+                font-size: 8px;
+                padding: 4px;
+            }
+
+            .save-load button {
+                font-size: 7px;
+                padding: 4px;
+            }
+
+            .stat-row {
+                font-size: 9px;
+            }
+
+            .elev-canvas {
+                height: 90px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #panel-left,
+            #panel-right {
+                width: calc(100vw - 20px);
+                max-width: none;
+                left: 10px;
+                right: 10px;
+                padding: 10px;
+            }
+
+            #panel-right {
+                top: auto;
+                bottom: 80px;
+            }
+
+            #panel-player {
+                bottom: 10px;
+                width: calc(100vw - 20px);
+            }
+
+            .tr-btn {
+                padding: 5px 8px;
+                font-size: 9px;
+            }
+
+            .icon-btn {
+                width: 30px;
+                height: 30px;
+            }
+
+            .btn {
+                padding: 8px;
+                font-size: 10px;
+            }
+
+            .prog-wrap {
+                width: 80px;
+            }
+
+            input[type=range] {
+                width: 50px;
+            }
+        }
     </style>
 </head>
 
