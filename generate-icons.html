@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generar Iconos PWA</title>
+</head>
+<body>
+    <canvas id="canvas192" width="192" height="192"></canvas>
+    <canvas id="canvas512" width="512" height="512"></canvas>
+    <script>
+        function drawIcon(canvas, size) {
+            const ctx = canvas.getContext('2d');
+            
+            // Fondo oscuro
+            ctx.fillStyle = '#060c18';
+            ctx.fillRect(0, 0, size, size);
+            
+            // Borde redondeado
+            ctx.strokeStyle = '#00d2ff';
+            ctx.lineWidth = size / 64;
+            ctx.strokeRect(size/16, size/16, size - size/8, size - size/8);
+            
+            // Círculo exterior (opaco)
+            ctx.beginPath();
+            ctx.arc(size/2, size/2, size * 0.23, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(0, 210, 255, 0.3)';
+            ctx.fill();
+            
+            // Círculo principal
+            ctx.beginPath();
+            ctx.arc(size/2, size/2, size * 0.16, 0, Math.PI * 2);
+            ctx.fillStyle = '#00d2ff';
+            ctx.fill();
+            
+            // Cruz de mapa
+            ctx.strokeStyle = '#060c18';
+            ctx.lineWidth = size / 24;
+            ctx.lineCap = 'round';
+            
+            // Línea vertical
+            ctx.beginPath();
+            ctx.moveTo(size/2, size * 0.35);
+            ctx.lineTo(size/2, size * 0.65);
+            ctx.stroke();
+            
+            // Línea horizontal
+            ctx.beginPath();
+            ctx.moveTo(size * 0.39, size/2);
+            ctx.lineTo(size * 0.61, size/2);
+            ctx.stroke();
+            
+            // Círculo exterior punteado
+            ctx.beginPath();
+            ctx.arc(size/2, size/2, size * 0.39, 0, Math.PI * 2);
+            ctx.strokeStyle = 'rgba(0, 210, 255, 0.5)';
+            ctx.lineWidth = size / 64;
+            ctx.setLineDash([size/25, size/50]);
+            ctx.stroke();
+            ctx.setLineDash([]);
+        }
+        
+        // Generar icono 192x192
+        const canvas192 = document.getElementById('canvas192');
+        drawIcon(canvas192, 192);
+        const link192 = document.createElement('a');
+        link192.download = 'icon-192.png';
+        link192.href = canvas192.toDataURL('image/png');
+        link192.click();
+        
+        // Generar icono 512x512
+        const canvas512 = document.getElementById('canvas512');
+        drawIcon(canvas512, 512);
+        const link512 = document.createElement('a');
+        link512.download = 'icon-512.png';
+        link512.href = canvas512.toDataURL('image/png');
+        link512.click();
+        
+        document.body.innerHTML = '<h1>Iconos generados y descargados</h1><p>icon-192.png y icon-512.png deberían haberse descargado automáticamente.</p>';
+    </script>
+</body>
+</html>

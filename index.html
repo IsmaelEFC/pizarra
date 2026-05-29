@@ -4,7 +4,14 @@
 <head>
     <title>Pizarra de Ruta 3D - Dual Map Style</title>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#00d2ff">
+    <meta name="description" content="Aplicación de animación de rutas con MapLibre GL">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Rutas">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icon-192.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link
         href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap"
@@ -1016,20 +1023,23 @@
         /* RESPONSIVE - MOBILE */
         @media (max-width: 768px) {
             #panel-left {
-                width: calc(100vw - 32px);
-                max-width: 320px;
+                width: 260px;
+                max-width: calc(100vw - 32px);
                 top: 10px;
                 left: 16px;
                 padding: 12px;
+                max-height: calc(100vh - 100px);
+                overflow-y: auto;
             }
 
             #panel-right {
-                width: calc(100vw - 32px);
-                max-width: 320px;
+                width: 280px;
+                max-width: calc(100vw - 32px);
                 top: 10px;
                 right: 16px;
                 padding: 12px;
-                max-height: calc(100vh - 80px);
+                max-height: calc(100vh - 100px);
+                overflow-y: auto;
             }
 
             #top-buttons {
@@ -1052,7 +1062,7 @@
                 padding: 8px 12px;
                 gap: 8px;
                 width: calc(100vw - 24px);
-                max-width: 400px;
+                max-width: 380px;
             }
 
             .ctrl-btn {
@@ -1123,23 +1133,26 @@
         }
 
         @media (max-width: 480px) {
-            #panel-left,
-            #panel-right {
-                width: calc(100vw - 20px);
-                max-width: none;
+            #panel-left {
+                width: 240px;
+                max-width: calc(100vw - 20px);
                 left: 10px;
-                right: 10px;
                 padding: 10px;
+                max-height: calc(100vh - 80px);
             }
 
             #panel-right {
-                top: auto;
-                bottom: 80px;
+                width: 240px;
+                max-width: calc(100vw - 20px);
+                right: 10px;
+                padding: 10px;
+                max-height: calc(100vh - 80px);
             }
 
             #panel-player {
                 bottom: 10px;
                 width: calc(100vw - 20px);
+                max-width: 340px;
             }
 
             .tr-btn {
@@ -1163,6 +1176,17 @@
 
             input[type=range] {
                 width: 50px;
+            }
+
+            .ctrl-btn {
+                width: 30px;
+                height: 30px;
+            }
+
+            .play-ctrl {
+                width: 36px;
+                height: 36px;
+                font-size: 14px;
             }
         }
     </style>
@@ -1347,6 +1371,21 @@
     <script src="app.ui.js"></script>
     <script src="app.map.js"></script>
     <script src="app.init.js"></script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then((registration) => {
+                        console.log('Service Worker registrado con éxito:', registration.scope);
+                    })
+                    .catch((error) => {
+                        console.log('Error al registrar Service Worker:', error);
+                    });
+            });
+        }
+    </script>
 </body>
 
 </html>
